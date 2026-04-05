@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CampusBite - Bennett University Food Pre-Order Platform
 
-## Getting Started
+CampusBite is a comprehensive food pre-ordering solution designed specifically for Bennett University. It allows students to skip long queues by ordering food from campus outlets (like Hotspot, Southern Stories, etc.) either for immediate pickup or scheduled for a later time.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### For Students
+- **Instant & Scheduled Orders**: Order food to be ready ASAP or pick a specific time later in the day.
+- **Real-time Tracking**: Monitor your order status from 'Placed' to 'Ready for Pickup'.
+- **Seamless Cart Experience**: Add items from multiple categories with ease.
+- **Responsive Design**: Polished, mobile-first UI with smooth animations (Framer Motion).
+- **University Auth**: Secure login/registration restricted to `@bennett.edu.in` emails.
+
+### For Outlet Admins (In Development)
+- **Order Management**: Real-time dashboard to accept and update order statuses.
+- **Menu Control**: Toggle item availability and manage categories.
+- **Analytics**: Track daily sales and popular items.
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js 15+, TypeScript, Tailwind CSS, Framer Motion, Lucide React.
+- **Backend**: Node.js, Express, MongoDB (Mongoose), Socket.io (for real-time updates).
+- **Authentication**: JSON Web Tokens (JWT) with secure local storage.
+
+## 📦 Project Structure
+
+```text
+campusbite/
+├── server/                # Express Backend
+│   ├── models/           # Mongoose Schemas (User, Order, Outlet, etc.)
+│   ├── routes/           # API Endpoints (Auth, Orders, Outlets)
+│   ├── middleware/       # JWT Auth & Role validation
+│   └── utils/            # Seeding & helper functions
+└── src/                  # Next.js Frontend
+    ├── app/              # App Router (Pages & Layouts)
+    ├── components/       # UI & Layout components
+    ├── store/            # Context API (Auth, Cart)
+    ├── types/            # TypeScript Interfaces
+    └── lib/              # Utils & Animations
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚦 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
+- Node.js (v18+)
+- MongoDB Atlas account or local MongoDB instance
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Installation
 
-## Learn More
+1. **Clone the repository**:
+   ```bash
+   git clone <repository-url>
+   cd campusbite
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Environment Setup**:
+   Create a `.env` file in the root directory with the following:
+   ```env
+   MONGODB_URI=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_secret
+   PORT=5004
+   NEXT_PUBLIC_API_URL=http://localhost:5004
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Run the application**:
 
-## Deploy on Vercel
+   **Option 1: Concurrent (Recommended)**
+   ```bash
+   npm run dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   **Option 2: Separate Terminals**
+   - Backend: `npm run dev:server`
+   - Frontend: `npm run dev:client`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧪 Testing the Flow
+
+1. **Seeding**: The database automatically seeds with Bennett University outlets (Hotspot, Southern Stories, etc.) on the first run in development mode.
+2. **Login**:
+   - **Student**: `john@bennett.edu.in` / `student123`
+   - **Admin**: `admin@campusbite.com` / `admin123`
+3. **Order**: Browse an outlet, add items, and try the **Scheduled Pickup** feature in the cart.
+
+## 📝 Roadmap
+- [x] Student Authentication & Profile
+- [x] Outlet & Menu Browsing
+- [x] Cart & Order Placement (Instant/Scheduled)
+- [x] Order History & Tracking
+- [ ] Outlet Admin Dashboard
+- [ ] Push Notifications for Order Status
+- [ ] Super Admin Analytics Panel
+
+## 📄 License
+This project is developed for Bennett University campus use.
