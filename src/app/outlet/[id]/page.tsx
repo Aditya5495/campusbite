@@ -23,8 +23,16 @@ import { useCart } from "@/store/CartContext";
 import { formatCurrency, cn } from "@/lib/utils";
 import { PUBLIC_API_URL } from "@/lib/public-api-url";
 
+function paramId(params: Record<string, string | string[]> | null): string | undefined {
+  const raw = params?.id;
+  if (typeof raw === "string") return raw;
+  if (Array.isArray(raw)) return raw[0];
+  return undefined;
+}
+
 export default function OutletPage() {
-  const { id } = useParams();
+  const params = useParams();
+  const id = paramId(params);
   const { addItem, items: cartItems, updateQuantity } = useCart();
   
   const [outlet, setOutlet] = useState<Outlet | null>(null);
