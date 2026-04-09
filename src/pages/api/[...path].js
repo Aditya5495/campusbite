@@ -1,5 +1,5 @@
 /* eslint-disable import/no-commonjs */
-const { app, ensureDbConnection } = require('../../../../server/app');
+const { app, ensureDbConnection } = require('../../../server/app');
 
 export const config = {
   api: {
